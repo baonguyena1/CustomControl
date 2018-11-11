@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF19648E219676320062432F /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19648D219676320062432F /* ShadowView.swift */; };
+		BF196490219683580062432F /* BarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19648F219683580062432F /* BarEntry.swift */; };
+		BF80B8C62196B64400D0AD43 /* SliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80B8C52196B64400D0AD43 /* SliderControl.swift */; };
+		BFB7B9DB2195D46A003EB739 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7B9DA2195D46A003EB739 /* LineChart.swift */; };
+		BFD3EC1B2197DD48006B9C6D /* SliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD3EC1A2197DD48006B9C6D /* SliderThumbLayer.swift */; };
+		BFD3EC1D2197E2B3006B9C6D /* SliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD3EC1C2197E2B3006B9C6D /* SliderTrackLayer.swift */; };
 		BFF8C598219481600088C595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8C597219481600088C595 /* AppDelegate.swift */; };
 		BFF8C59A219481600088C595 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8C599219481600088C595 /* ViewController.swift */; };
 		BFF8C59D219481600088C595 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8C59B219481600088C595 /* Main.storyboard */; };
@@ -15,6 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF19648D219676320062432F /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		BF19648F219683580062432F /* BarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarEntry.swift; sourceTree = "<group>"; };
+		BF80B8C52196B64400D0AD43 /* SliderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderControl.swift; sourceTree = "<group>"; };
+		BFB7B9DA2195D46A003EB739 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		BFD3EC1A2197DD48006B9C6D /* SliderThumbLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderThumbLayer.swift; sourceTree = "<group>"; };
+		BFD3EC1C2197E2B3006B9C6D /* SliderTrackLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackLayer.swift; sourceTree = "<group>"; };
 		BFF8C594219481600088C595 /* ChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF8C597219481600088C595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFF8C599219481600088C595 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +72,12 @@
 				BFF8C59E219481620088C595 /* Assets.xcassets */,
 				BFF8C5A0219481620088C595 /* LaunchScreen.storyboard */,
 				BFF8C5A3219481620088C595 /* Info.plist */,
+				BFB7B9DA2195D46A003EB739 /* LineChart.swift */,
+				BF19648D219676320062432F /* ShadowView.swift */,
+				BF19648F219683580062432F /* BarEntry.swift */,
+				BF80B8C52196B64400D0AD43 /* SliderControl.swift */,
+				BFD3EC1A2197DD48006B9C6D /* SliderThumbLayer.swift */,
+				BFD3EC1C2197E2B3006B9C6D /* SliderTrackLayer.swift */,
 			);
 			path = ChartDemo;
 			sourceTree = "<group>";
@@ -135,8 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF196490219683580062432F /* BarEntry.swift in Sources */,
+				BF19648E219676320062432F /* ShadowView.swift in Sources */,
 				BFF8C59A219481600088C595 /* ViewController.swift in Sources */,
 				BFF8C598219481600088C595 /* AppDelegate.swift in Sources */,
+				BF80B8C62196B64400D0AD43 /* SliderControl.swift in Sources */,
+				BFB7B9DB2195D46A003EB739 /* LineChart.swift in Sources */,
+				BFD3EC1D2197E2B3006B9C6D /* SliderTrackLayer.swift in Sources */,
+				BFD3EC1B2197DD48006B9C6D /* SliderThumbLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4X4ZDEX56P;
 				INFOPLIST_FILE = ChartDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +328,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4X4ZDEX56P;
 				INFOPLIST_FILE = ChartDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
