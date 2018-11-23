@@ -21,7 +21,7 @@ class LineChart: UIView {
     fileprivate var scrollView = UIScrollView()
     
     fileprivate let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    fileprivate let levels = ["A1", "A2", "B1", "B2", ">B2"]
+    fileprivate let levels = ["", "A1", "A2", "B1", "B2", ">B2"]
     
     var datas: [BarEntry]? = nil {
         didSet {
@@ -109,9 +109,9 @@ class LineChart: UIView {
     }
     
     fileprivate func drawBottomBar() {
-        for i in 1..<months.count + 1 {
+        for i in 0..<months.count {
             let width = (self.frame.size.width - leadingSpace - trailingSpace) / CGFloat(months.count)
-            let xPos = width * CGFloat(i) + leadingSpace - width / 2.0
+            let xPos = width * CGFloat(i) + leadingSpace
             let yPos = self.frame.size.height - bottomSpace + 2.0
             
             let textLayer = CATextLayer()
@@ -122,7 +122,7 @@ class LineChart: UIView {
             textLayer.contentsScale = UIScreen.main.scale
             textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
             textLayer.fontSize = 14
-            textLayer.string = months[i-1]
+            textLayer.string = months[i]
             mainLayer.addSublayer(textLayer)
         }
     }
@@ -153,13 +153,14 @@ class LineChart: UIView {
         for i in 0..<datas.count - 1 {
             let point1 = datas[i]
             let point2 = datas[i+1]
-            let xPos1 = (self.frame.size.width - leadingSpace - trailingSpace) / CGFloat(months.count) * CGFloat(point1.month) + leadingSpace
+            let width = (self.frame.size.width - leadingSpace - trailingSpace) / CGFloat(months.count)
+            let xPos1 = width * CGFloat(point1.month - 1) + leadingSpace + width/2.0
             let yPos1 = (self.frame.size.height - bottomSpace - topSpace) / CGFloat(levels.count - 1) * CGFloat(levels.count-point1.level) + topSpace
             
             let path = UIBezierPath()
             path.move(to: CGPoint(x: xPos1, y: yPos1))
             
-            let xPos2 = (self.frame.size.width - leadingSpace - trailingSpace) / CGFloat(months.count) * CGFloat(point2.month) + leadingSpace
+            let xPos2 = width * CGFloat(point2.month - 1) + leadingSpace + width/2.0
             let yPos2 = (self.frame.size.height - bottomSpace - topSpace) / CGFloat(levels.count - 1) * CGFloat(levels.count-point2.level) + topSpace
             path.addLine(to: CGPoint(x: xPos2, y: yPos2))
             
@@ -178,7 +179,8 @@ class LineChart: UIView {
         for item in datas {
             let month = item.month
             let index = item.level
-            let xPos = (self.frame.size.width - leadingSpace - trailingSpace) / CGFloat(months.count) * CGFloat(month) + leadingSpace - 10.0/2
+            let width = (self.frame.size.width - leadingSpace - trailingSpace) / CGFloat(months.count)
+            let xPos = width * CGFloat(month - 1) + leadingSpace + width/2.0 - 10.0/2
             let yPos = (self.frame.size.height - bottomSpace - topSpace) / CGFloat(levels.count - 1) * CGFloat(levels.count-index) + topSpace - 10.0/2
             let path = UIBezierPath(ovalIn: CGRect(x: xPos, y: yPos, width: 10, height: 10))
             let shape = CAShapeLayer()

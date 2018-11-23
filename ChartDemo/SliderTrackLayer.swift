@@ -67,6 +67,17 @@ class SliderTrackLayer: CALayer {
         ctx.addPath(zizacPath.cgPath)
         ctx.fillPath()
         
+        let mask = CAShapeLayer()
+        mask.frame = bounds
+        mask.path = zizacPath.cgPath
+        
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.colors = [#colorLiteral(red: 0.9882352941, green: 0.3098039216, blue: 0.03137254902, alpha: 1).cgColor, #colorLiteral(red: 0.9803921569, green: 0.9137254902, blue: 0.8705882353, alpha: 1).cgColor]
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+//        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+//        gradientLayer.mask = mask
+//        self.addSublayer(gradientLayer)
+        
     }
 
 }
