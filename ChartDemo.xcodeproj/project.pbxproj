@@ -10,6 +10,7 @@
 		BF19648E219676320062432F /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19648D219676320062432F /* ShadowView.swift */; };
 		BF196490219683580062432F /* BarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19648F219683580062432F /* BarEntry.swift */; };
 		BF80B8C62196B64400D0AD43 /* SliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80B8C52196B64400D0AD43 /* SliderControl.swift */; };
+		BF8979C221A9223B00DD705F /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8979C121A9223B00DD705F /* RadarView.swift */; };
 		BFB7B9DB2195D46A003EB739 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7B9DA2195D46A003EB739 /* LineChart.swift */; };
 		BFD3EC1B2197DD48006B9C6D /* SliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD3EC1A2197DD48006B9C6D /* SliderThumbLayer.swift */; };
 		BFD3EC1D2197E2B3006B9C6D /* SliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD3EC1C2197E2B3006B9C6D /* SliderTrackLayer.swift */; };
@@ -24,6 +25,7 @@
 		BF19648D219676320062432F /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		BF19648F219683580062432F /* BarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarEntry.swift; sourceTree = "<group>"; };
 		BF80B8C52196B64400D0AD43 /* SliderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderControl.swift; sourceTree = "<group>"; };
+		BF8979C121A9223B00DD705F /* RadarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarView.swift; sourceTree = "<group>"; };
 		BFB7B9DA2195D46A003EB739 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		BFD3EC1A2197DD48006B9C6D /* SliderThumbLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderThumbLayer.swift; sourceTree = "<group>"; };
 		BFD3EC1C2197E2B3006B9C6D /* SliderTrackLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackLayer.swift; sourceTree = "<group>"; };
@@ -47,6 +49,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF8979BE21A9220400DD705F /* RadarView */ = {
+			isa = PBXGroup;
+			children = (
+				BF8979C121A9223B00DD705F /* RadarView.swift */,
+			);
+			path = RadarView;
+			sourceTree = "<group>";
+		};
+		BF8979BF21A9221300DD705F /* SliderControl */ = {
+			isa = PBXGroup;
+			children = (
+				BF80B8C52196B64400D0AD43 /* SliderControl.swift */,
+				BFD3EC1A2197DD48006B9C6D /* SliderThumbLayer.swift */,
+				BFD3EC1C2197E2B3006B9C6D /* SliderTrackLayer.swift */,
+			);
+			path = SliderControl;
+			sourceTree = "<group>";
+		};
+		BF8979C021A9222000DD705F /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				BFB7B9DA2195D46A003EB739 /* LineChart.swift */,
+				BF19648D219676320062432F /* ShadowView.swift */,
+				BF19648F219683580062432F /* BarEntry.swift */,
+			);
+			path = LineChart;
+			sourceTree = "<group>";
+		};
 		BFF8C58B219481600088C595 = {
 			isa = PBXGroup;
 			children = (
@@ -72,12 +102,9 @@
 				BFF8C59E219481620088C595 /* Assets.xcassets */,
 				BFF8C5A0219481620088C595 /* LaunchScreen.storyboard */,
 				BFF8C5A3219481620088C595 /* Info.plist */,
-				BFB7B9DA2195D46A003EB739 /* LineChart.swift */,
-				BF19648D219676320062432F /* ShadowView.swift */,
-				BF19648F219683580062432F /* BarEntry.swift */,
-				BF80B8C52196B64400D0AD43 /* SliderControl.swift */,
-				BFD3EC1A2197DD48006B9C6D /* SliderThumbLayer.swift */,
-				BFD3EC1C2197E2B3006B9C6D /* SliderTrackLayer.swift */,
+				BF8979BE21A9220400DD705F /* RadarView */,
+				BF8979C021A9222000DD705F /* LineChart */,
+				BF8979BF21A9221300DD705F /* SliderControl */,
 			);
 			path = ChartDemo;
 			sourceTree = "<group>";
@@ -157,6 +184,7 @@
 				BF19648E219676320062432F /* ShadowView.swift in Sources */,
 				BFF8C59A219481600088C595 /* ViewController.swift in Sources */,
 				BFF8C598219481600088C595 /* AppDelegate.swift in Sources */,
+				BF8979C221A9223B00DD705F /* RadarView.swift in Sources */,
 				BF80B8C62196B64400D0AD43 /* SliderControl.swift in Sources */,
 				BFB7B9DB2195D46A003EB739 /* LineChart.swift in Sources */,
 				BFD3EC1D2197E2B3006B9C6D /* SliderTrackLayer.swift in Sources */,
