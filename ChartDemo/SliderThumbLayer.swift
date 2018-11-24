@@ -31,17 +31,8 @@ class SliderThumbLayer: CALayer {
         ctx.addPath(path.cgPath)
         ctx.fillPath()
         
-        // Stroke
-        ctx.setStrokeColor(shadowColor.cgColor)
-        ctx.setLineWidth(0.5)
-        ctx.addPath(path.cgPath)
-        ctx.strokePath()
-        
-        if highlighted {
-            ctx.setFillColor(UIColor(white: 0.0, alpha: 0.1).cgColor)
-            ctx.addPath(path.cgPath)
-            ctx.fillPath()
-        }
+//        self.contents = slider.thumImage?.cgImage
+//        self.contentsGravity = .resizeAspect
     }
 
 }

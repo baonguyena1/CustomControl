@@ -12,6 +12,19 @@ import QuartzCore
 @IBDesignable
 class SliderControl: UIControl {
     
+    @IBInspectable var autoSnap: Bool = false {
+        didSet {
+            updateLayerFrame()
+            autoSnapThumb()
+        }
+    }
+    
+    @IBInspectable var thumImage: UIImage? {
+        didSet {
+            thumbLayer.setNeedsDisplay()
+        }
+    }
+    
     @IBInspectable var minValue: CGFloat = 0.0 {
         didSet {
             updateLayerFrame()
@@ -25,6 +38,12 @@ class SliderControl: UIControl {
     }
     
     @IBInspectable var currentValue: CGFloat = 0.5 {
+        didSet {
+            updateLayerFrame()
+        }
+    }
+    
+    @IBInspectable var segmentNumber: Int = 4 {
         didSet {
             updateLayerFrame()
         }
@@ -51,8 +70,9 @@ class SliderControl: UIControl {
     fileprivate var thumbWidth: CGFloat {
         return self.bounds.height * thumbRatio
     }
-    fileprivate let trackRatio: CGFloat = 0.45
-    fileprivate let thumbRatio: CGFloat = 0.8
+    
+    fileprivate let trackRatio: CGFloat = 0.6
+    fileprivate let thumbRatio: CGFloat = 1.0
     
     fileprivate let trackLayer = SliderTrackLayer()
     fileprivate let thumbLayer = SliderThumbLayer()
@@ -109,14 +129,11 @@ class SliderControl: UIControl {
         trackLayer.setNeedsDisplay()
         
         let xPosThumb = positionFor(value: currentValue) - thumbWidth / 2.0
+        
         let yPosThumb = (bounds.height - thumbWidth) / 2.0
         thumbLayer.frame = CGRect(x: xPosThumb, y: yPosThumb, width: thumbWidth, height: thumbWidth)
         thumbLayer.setNeedsDisplay()
         CATransaction.commit()
-    }
-    
-    func positionFor(value: CGFloat) -> CGFloat {
-        return CGFloat(bounds.width - thumbWidth) * (value - minValue) / (maxValue - minValue) + CGFloat(thumbWidth / 2.0)
     }
     
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -125,6 +142,9 @@ class SliderControl: UIControl {
             thumbLayer.highlighted = true
             return true
         }
+        currentValue = boundValue(value: valueFor(position: previousLocation.x), lowerValue: minValue, upperValue: maxValue)
+        autoSnapThumb()
+//        sendActions(for: .touchUpInside)
         return false
     }
     
@@ -144,11 +164,31 @@ class SliderControl: UIControl {
     }
     
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        autoSnapThumb()
         thumbLayer.highlighted = false
+    }
+    
+    func positionFor(value: CGFloat) -> CGFloat {
+        return CGFloat(bounds.width - thumbWidth) * (value - minValue) / (maxValue - minValue) + CGFloat(thumbWidth / 2.0)
+    }
+    
+    fileprivate func valueFor(position: CGFloat) -> CGFloat {
+        return (position - CGFloat(thumbWidth / 2.0)) * ( maxValue - minValue) / (CGFloat(bounds.width - thumbWidth)) + minValue
     }
     
     fileprivate func boundValue(value: CGFloat, lowerValue: CGFloat, upperValue: CGFloat) -> CGFloat {
         return min(max(value, lowerValue), upperValue)
+    }
+    
+    fileprivate func autoSnapThumb() {
+        if !self.autoSnap {
+            return
+        }
+        let itemWidth = bounds.width / CGFloat(self.segmentNumber)
+        let index = roundf(Float(positionFor(value: currentValue) / itemWidth))
+        let position = CGFloat(index) * itemWidth
+        currentValue = boundValue(value: valueFor(position: position), lowerValue: minValue, upperValue: maxValue)
+        sendActions(for: .valueChanged)
     }
 
 }
