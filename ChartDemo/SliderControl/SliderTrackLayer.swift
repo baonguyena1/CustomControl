@@ -60,20 +60,24 @@ class SliderTrackLayer: CALayer {
         let zizazPath = UIBezierPath()
         
         zizazPath.move(to: CGPoint(x: radius, y: 0))
-        for i in 1...(slider.segmentNumber - 1) {
-            let xPos = itemWidth * CGFloat(i)
-            zizazPath.addLine(to: CGPoint(x: xPos - triangleWidth/2, y: 0))
-            zizazPath.addLine(to: CGPoint(x: xPos, y: triangleHeight))
-            zizazPath.addLine(to: CGPoint(x: xPos + triangleWidth/2, y: 0))
+        if slider.segmentNumber > 1 {
+            for i in 1...(slider.segmentNumber - 1) {
+                let xPos = itemWidth * CGFloat(i)
+                zizazPath.addLine(to: CGPoint(x: xPos - triangleWidth/2, y: 0))
+                zizazPath.addLine(to: CGPoint(x: xPos, y: triangleHeight))
+                zizazPath.addLine(to: CGPoint(x: xPos + triangleWidth/2, y: 0))
+            }
         }
         zizazPath.addLine(to: CGPoint(x: bounds.width - radius, y: 0))
         zizazPath.addArc(withCenter: CGPoint(x: bounds.width - radius, y: radius), radius: radius, startAngle: -.pi/2, endAngle: .pi/2, clockwise: true)
         
-        for i in (1...(slider.segmentNumber - 1)).reversed() {
-            let xPos = itemWidth * CGFloat(i)
-            zizazPath.addLine(to: CGPoint(x: xPos + triangleWidth/2, y: bounds.height))
-            zizazPath.addLine(to: CGPoint(x: xPos, y: bounds.height - triangleHeight))
-            zizazPath.addLine(to: CGPoint(x: xPos - triangleWidth/2, y: bounds.height))
+        if slider.segmentNumber > 1 {
+            for i in (1...(slider.segmentNumber - 1)).reversed() {
+                let xPos = itemWidth * CGFloat(i)
+                zizazPath.addLine(to: CGPoint(x: xPos + triangleWidth/2, y: bounds.height))
+                zizazPath.addLine(to: CGPoint(x: xPos, y: bounds.height - triangleHeight))
+                zizazPath.addLine(to: CGPoint(x: xPos - triangleWidth/2, y: bounds.height))
+            }            
         }
         zizazPath.addLine(to: CGPoint(x: radius, y: bounds.height))
         zizazPath.addArc(withCenter: CGPoint(x: radius, y: radius), radius: radius, startAngle: 3*CGFloat.pi/2, endAngle: .pi/2, clockwise: false)
