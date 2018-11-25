@@ -142,9 +142,10 @@ class SliderControl: UIControl {
             thumbLayer.highlighted = true
             return true
         }
+        
         currentValue = boundValue(value: valueFor(position: previousLocation.x), lowerValue: minValue, upperValue: maxValue)
         autoSnapThumb()
-//        sendActions(for: .touchUpInside)
+        thumbLayer.highlighted = false
         return false
     }
     

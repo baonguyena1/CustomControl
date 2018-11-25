@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o8C-OJ-Nhi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpA-QZ-Ufh" customClass="SliderControl" customModule="ChartDemo" customModuleProvider="target">
-                                <rect key="frame" x="16" y="60" width="343" height="40"/>
+                                <rect key="frame" x="16" y="104" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0Bf-R1-8RZ"/>
                                 </constraints>
@@ -39,19 +39,20 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="currentValue">
                                         <real key="value" value="1.6000000000000001"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="thumbTint">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minValue">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoSnap" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoSnap" value="NO"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="segmentNumber">
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="thumbTint">
+                                        <color key="value" red="0.98823529409999999" green="0.30980392159999998" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="thumImage" value="leaf"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sliderTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oEx-NY-3Bc"/>
@@ -67,7 +68,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shapeColor">
-                                        <color key="value" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.55686274509803924" green="0.97934550050000002" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -85,6 +86,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Wy3-Ki-IGc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Nuw-OR-gXp">
+                            <connections>
+                                <segue destination="DiH-eZ-qRs" kind="show" id="NKr-LJ-PcP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="lineChart" destination="DhE-RT-jki" id="PVC-zD-wWE"/>
                         <outlet property="slideControl" destination="qpA-QZ-Ufh" id="Z2L-bG-Ced"/>
@@ -92,6 +100,66 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="974" y="-609"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="sDm-nI-xGl">
+            <objects>
+                <viewController id="DiH-eZ-qRs" customClass="SecondViewController" customModule="ChartDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iUU-Th-gOq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D65-Pa-h04" customClass="RoundedImageView" customModule="ChartDemo" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="84" width="200" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="7ID-zp-TJw"/>
+                                    <constraint firstAttribute="width" secondItem="D65-Pa-h04" secondAttribute="height" multiplier="1:1" id="DFY-9e-bIM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                        <color key="value" red="0.98823529409999999" green="0.30980392159999998" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="leaf"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D65-Pa-h04" firstAttribute="centerX" secondItem="iUU-Th-gOq" secondAttribute="centerX" id="BPH-f4-7qQ"/>
+                            <constraint firstItem="D65-Pa-h04" firstAttribute="top" secondItem="wA9-pa-38K" secondAttribute="top" constant="20" id="i3U-l4-Kyj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wA9-pa-38K"/>
+                    </view>
+                    <connections>
+                        <outlet property="roundedImageView" destination="D65-Pa-h04" id="UAF-48-dzT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ctw-Mr-irV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1753" y="-609"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lrO-CT-CcM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o8C-OJ-Nhi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RKs-fw-k22">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0w9-GM-QjG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y95-SK-mql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="216.80000000000001" y="-609.44527736131943"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="leaf" width="230.39999389648438" height="154.08000183105469"/>
+    </resources>
 </document>

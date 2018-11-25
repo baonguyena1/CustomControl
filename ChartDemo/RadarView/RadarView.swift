@@ -100,7 +100,7 @@ class RadarView: UIView {
             for i in 0..<ovalCount {
                 let angle = 3 * .pi / 2 + CGFloat(i) * anglePerOval
                 let pointOnEdge = pointFor(angle: angle, radius: radius)
-                let width: CGFloat = 30.0
+                let width: CGFloat = 40.0
                 let height: CGFloat = 22.0
                 let xOffset = pointOnEdge.x >= center.x ? width/2.0 : -width/2.0
                 let yOffset = pointOnEdge.y >= center.y ? height / 2.0 : -height / 2.0
@@ -142,8 +142,10 @@ class RadarView: UIView {
         let textLayer = CATextLayer()
         textLayer.foregroundColor = UIColor.red.cgColor
         textLayer.backgroundColor = UIColor.clear.cgColor
-        textLayer.alignmentMode = .right
+        textLayer.alignmentMode = .center
         textLayer.contentsScale = UIScreen.main.scale
+        textLayer.truncationMode = .end
+        textLayer.isWrapped = true
         textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
         textLayer.fontSize = 12
         textLayer.string = string
