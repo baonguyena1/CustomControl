@@ -190,7 +190,4 @@ class LineChart: UIView {
         }
     }
     
-    fileprivate func translateHeightValueToYPosition(value: CGFloat) -> CGFloat {
-        return 0
-    }
 }
