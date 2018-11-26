@@ -23,6 +23,7 @@ class SliderThumbLayer: CALayer {
         guard let slider = sliderControl else {
             return
         }
+        sublayers?.forEach { $0.removeFromSuperlayer() }
         
         let shadowColor = UIColor.gray
         ctx.setShadow(offset: CGSize(width: 0, height: 3), blur: 1, color: shadowColor.cgColor)

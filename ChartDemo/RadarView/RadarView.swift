@@ -41,17 +41,17 @@ class RadarView: UIView {
         }
     }
     
-    var datasources: [Int] = [4, 5, 3, 4, 5] {
+    var datasources: [CGFloat] = [0.4, 0.65, 0.75, 0.8, 1.0] {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    var attributes: [String] = ["Hello", "What", "Is", "Your", "Name"] {
-        didSet {
-            setNeedsDisplay()
-        }
+    fileprivate var attributes: [String] {
+        return datasources.map { "\(Int($0 * 100))%" }
     }
+    
+    fileprivate let ovalSize = CGFloat(6)
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -65,13 +65,13 @@ class RadarView: UIView {
         }
         
         let center = CGPoint(x: bounds.width/2, y: bounds.height/2)
-        let radius = min(bounds.width, bounds.height) / 2 * 0.7
+        let radius = min(bounds.width, bounds.height) / 2 * 0.9
         
-        let radiusPerOval = (radius - padding) / CGFloat(ovalCount)
+        let radiusPerOval = (radius - padding) / CGFloat(10)
         let anglePerOval = 2 * .pi / CGFloat(ovalCount)
         
         // Draw oval
-        for i in 1...ovalCount {
+        for i in 5...10 {
             let subRadius = radiusPerOval * CGFloat(i)
             let path = UIBezierPath(arcCenter: center, radius: subRadius - lineWidth, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
             path.lineWidth = lineWidth
@@ -82,7 +82,7 @@ class RadarView: UIView {
         // Draw axis
         for i in 0..<ovalCount {
             let angle = 3 * .pi / 2 + CGFloat(i) * anglePerOval
-            let radius = max(bounds.width, bounds.height) / 2 - padding
+            let radius = min(bounds.width, bounds.height) / 2 - padding
             let next = pointFor(angle: angle, radius: radius)
             let path = UIBezierPath()
             path.move(to: center)
@@ -90,20 +90,28 @@ class RadarView: UIView {
             path.lineWidth = lineWidth
             ovalColor.setStroke()
             path.stroke()
+            
+            let ovalRadius = radius + ovalSize / 2.0
+            let ovalPoint = pointFor(angle: angle, radius: ovalRadius)
+            let ovalRect = CGRect(x: ovalPoint.x - ovalSize/2.0, y: ovalPoint.y - ovalSize/2.0, width: ovalSize, height: ovalSize)
+            let ovalPath = UIBezierPath(ovalIn: ovalRect)
+            UIColor.red.setStroke()
+            ovalPath.lineWidth = 0.5
+            ovalPath.stroke()
         }
         
         // Draw text
         if attributes.count == ovalCount {
             
-            let radius = max(bounds.width, bounds.height) / 2 - padding
+            let radius = min(bounds.width, bounds.height) / 2 - padding + ovalSize/2.0
             
             for i in 0..<ovalCount {
                 let angle = 3 * .pi / 2 + CGFloat(i) * anglePerOval
                 let pointOnEdge = pointFor(angle: angle, radius: radius)
-                let width: CGFloat = 40.0
-                let height: CGFloat = 22.0
-                let xOffset = pointOnEdge.x >= center.x ? width/2.0 : -width/2.0
-                let yOffset = pointOnEdge.y >= center.y ? height / 2.0 : -height / 2.0
+                let width: CGFloat = 45.0
+                let height: CGFloat = 20.0
+                let xOffset = pointOnEdge.x >= center.x ? width/4.0 : -width/4.0
+                let yOffset = pointOnEdge.y >= center.y ? height / 4.0 : -height / 4.0
                 let textCenter = CGPoint(x: pointOnEdge.x + xOffset, y: pointOnEdge.y + yOffset)
                 let text = self.text(with: attributes[i])
                 text.frame = CGRect(x: textCenter.x - width / 2.0, y: textCenter.y - height / 2.0, width: width, height: height)
@@ -116,7 +124,7 @@ class RadarView: UIView {
             let shapePath = UIBezierPath()
             for i in 0..<ovalCount {
                 
-                let radius = radiusPerOval * CGFloat(datasources[i])
+                let radius = radiusPerOval * CGFloat(datasources[i]) * CGFloat(10)
                 let angle = 3 * .pi / 2 + CGFloat(i) * anglePerOval
                 let point = pointFor(angle: angle, radius: radius)
                 if i == 0 {
