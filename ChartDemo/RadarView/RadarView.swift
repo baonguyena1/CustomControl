@@ -103,18 +103,19 @@ class RadarView: UIView {
         // Draw text
         if attributes.count == ovalCount {
             
-            let radius = min(bounds.width, bounds.height) / 2 - padding + ovalSize/2.0
+            let radius = min(bounds.width, bounds.height) / 2 - padding + ovalSize + 1.0
             
             for i in 0..<ovalCount {
                 let angle = 3 * .pi / 2 + CGFloat(i) * anglePerOval
                 let pointOnEdge = pointFor(angle: angle, radius: radius)
-                let width: CGFloat = 45.0
-                let height: CGFloat = 20.0
-                let xOffset = pointOnEdge.x >= center.x ? width/4.0 : -width/4.0
-                let yOffset = pointOnEdge.y >= center.y ? height / 4.0 : -height / 4.0
+                let width: CGFloat = 36.0
+                let height: CGFloat = 16.0
+                let xOffset = pointOnEdge.x >= center.x ? width/2.0 : -width/2.0
+                let yOffset = pointOnEdge.y >= center.y ? height/2.0 : -height/2.0
                 let textCenter = CGPoint(x: pointOnEdge.x + xOffset, y: pointOnEdge.y + yOffset)
                 let text = self.text(with: attributes[i])
                 text.frame = CGRect(x: textCenter.x - width / 2.0, y: textCenter.y - height / 2.0, width: width, height: height)
+                text.alignmentMode = pointOnEdge.x >= center.x ? .left : .right
                 layer.addSublayer(text)
             }
         }
@@ -155,7 +156,7 @@ class RadarView: UIView {
         textLayer.truncationMode = .end
         textLayer.isWrapped = true
         textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
-        textLayer.fontSize = 12
+        textLayer.fontSize = 13
         textLayer.string = string
         return textLayer
     }
